@@ -7,7 +7,7 @@ This repository is a simple example project using DynamoDB with the Go AWS SDK V
 - Go
 
 ## Steps to Execute
-1. Install Go dependencies specified in the `go.mod`: `go mod download`
+1. Install dependencies: `go get ./...`
 2. Run `docker-compose up` to start the DynamoDB container.
 3. Run `go run ./cmd/main.go` to execute the Go application.
 

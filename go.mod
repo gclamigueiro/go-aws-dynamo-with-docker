@@ -5,13 +5,13 @@ go 1.21.3
 require (
 	github.com/aws/aws-sdk-go v1.50.30
 	github.com/aws/aws-sdk-go-v2/config v1.27.4
+	github.com/aws/aws-sdk-go-v2/credentials v1.17.5
 	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.13.6
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.30.1
 )
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.25.2 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.17.5 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.15.2 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.2 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.2 // indirect
