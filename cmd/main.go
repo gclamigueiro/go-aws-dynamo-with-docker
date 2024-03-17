@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/gclamigueiro/go-aws-dynamo-with-docker/internal/dynamo"
 	"github.com/gclamigueiro/go-aws-dynamo-with-docker/internal/dynamo/daoImpl"
@@ -11,8 +12,13 @@ import (
 
 func main() {
 
-	ctx := context.Background()
-	client, err := dynamo.NewDynamoDBClient(dynamo.GetLocalConfiguration)
+	endpoint := os.Getenv("DYNAMO_ENDPOINT")
+
+	if endpoint == "" {
+		endpoint = "http://localhost:8000"
+	}
+
+	client, err := dynamo.NewDynamoDBClient(dynamo.GetLocalConfiguration(endpoint))
 	dynamoConfigurator := dynamo.NewDynamoConfigurator(client)
 
 	if err != nil {
@@ -24,6 +30,8 @@ func main() {
 
 	// Create some users
 	userDao := daoImpl.NewUserDao(client)
+
+	ctx := context.Background()
 
 	userDao.AddUser(ctx, models.User{
 		Username: "firstuser",

@@ -12,11 +12,12 @@ import (
 
 type clientOptions func(*dynamodb.Options)
 
-func GetLocalConfiguration(options *dynamodb.Options) {
-	endpoint := "http://localhost:8000"
-	options.Region = "us-west-2"
-	options.Credentials = credentials.NewStaticCredentialsProvider("local", "local", "local")
-	options.BaseEndpoint = aws.String(endpoint)
+func GetLocalConfiguration(endpoint string) clientOptions {
+	return func(options *dynamodb.Options) {
+		options.Region = "us-west-2"
+		options.Credentials = credentials.NewStaticCredentialsProvider("local", "local", "local")
+		options.BaseEndpoint = aws.String(endpoint)
+	}
 }
 
 func NewDynamoDBClient(opts ...clientOptions) (*dynamodb.Client, error) {

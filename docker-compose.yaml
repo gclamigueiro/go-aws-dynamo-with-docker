@@ -20,3 +20,13 @@ services:
       AWS_SECRET_ACCESS_KEY: local     
     depends_on:
       - go-aws-dynamo-local 
+# app:
+#    image: golang:1.21-alpine
+#    environment:
+#      DYNAMO_ENDPOINT: "http://go-aws-dynamo-local:8000"    
+#    volumes:
+#      - ./:/app
+#    working_dir: /app
+#    command: sh -c "go run ./cmd/main.go"         
+#    depends_on:
+#      - go-aws-dynamo-local  
